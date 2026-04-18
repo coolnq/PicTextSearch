@@ -5,21 +5,21 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pictextsearch"
 version = "0.1.0"
-description = "Текстовый поиск изображений через Яндекс, Google, Bing (асинхронно и синхронно)"
+description = "Текстовый поиск изображений через Яндекс (асинхронно и синхронно)"
 authors = [{ name = "Your Name", email = "you@example.com" }]
-license = { text = "MIT" }
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "httpx>=0.24.0",
-    "pyquery>=2.0.0",
-    "lxml>=4.9.0",
+    "httpx[http2]>=0.28.1",
+    "pyquery>=2.0.1",
+    "lxml>=6.1.0,<6.1.1",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0",
-    "ruff>=0.1.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.11",
     "mypy>=1.0",
 ]
 
@@ -27,13 +27,17 @@ dev = [
 Homepage = "https://github.com/yourname/pictextsearch"
 Repository = "https://github.com/yourname/pictextsearch.git"
 
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["demo*", "typings*", ".github*", "tests*"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py39"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
-ignore = ["E501"]  # line length handled by formatter
+ignore = ["E501"]
 
 [tool.ruff.format]
 quote-style = "double"
