@@ -1,8 +1,6 @@
-import json
-import re
 from typing import Any, Dict
 
-from ddgs.utils import json_loads
+from json import loads as json_loads
 from pyquery import PyQuery
 from typing_extensions import override
 

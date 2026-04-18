@@ -1,6 +1,6 @@
 import asyncio
 
-from demo.code.config import IMAGE_BASE_URL, get_image_path, logger
+from demo.code.config import logger
 from PicTextSearch import Network, Yandex
 from PicTextSearch.model import YandexResponse
 from PicTextSearch.sync import Yandex as YandexSync
