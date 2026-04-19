@@ -3,7 +3,8 @@ from .base import BaseSearchEngine
 
 
 class Yandex(BaseSearchEngine[YandexResponse]):
-    def __init__(self, base_url: str = "https://yandex.com/images/search", **kwargs):
+    def __init__(self, base_url: str = "https://yandex.com", **kwargs):
+        base_url = f"{base_url}/images/search"
         super().__init__(base_url, **kwargs)
 
     async def search(self, query: str, **kwargs) -> YandexResponse:
@@ -13,5 +14,6 @@ class Yandex(BaseSearchEngine[YandexResponse]):
             "nomisspell": 1,
             "source": "search"
         }
-        resp = await self.get(self.base_url, params=params)
+        # resp = await self.get(self.base_url, params=params)
+        resp = await self._send_request(method="get", params=params)
         return YandexResponse(resp.text, str(resp.url))
